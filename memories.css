@@ -73,6 +73,14 @@ body {
     box-shadow: 0 0 0 3px rgba(255,20,147,0.15);
 }
 
+@media (max-width: 768px){
+  .mem-back-btn{ top: 15px; left: 15px; padding: 6px 10px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px){
+  .mem-back-btn{ top: 12px; left: 12px; padding: 5px 8px; font-size: 0.75rem; }
+}
+
 /* ========== GALLERY TITLE ========== */
 .gallery-title {
     text-align: center;
@@ -102,6 +110,16 @@ body {
     50% {
         transform: scale(1.1);
     }
+}
+
+@media (max-width: 768px){
+  .gallery-title{ font-size: 1.8rem; gap: 10px; }
+  .heart{ font-size: 1.8rem; }
+}
+
+@media (max-width: 480px){
+  .gallery-title{ font-size: 1.3rem; gap: 8px; letter-spacing: 2px; text-shadow: 2px 2px 0px #ff1493, 3px 3px 0px rgba(255, 20, 147, 0.2); }
+  .heart{ font-size: 1.3rem; }
 }
 
 /* ========== PHOTO GRID ========== */
@@ -296,7 +314,39 @@ body {
     font-weight: bold;
 }
 
+@media (max-width: 768px){
+  .gallery-subtitle{ font-size: 1.1rem; letter-spacing: 1px; }
+}
+
+@media (max-width: 480px){
+  .gallery-subtitle{ font-size: 0.9rem; letter-spacing: 0.5px; }
+}
+
 /* ========== RESPONSIVE DESIGN ========== */
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .gallery-wrapper {
+        padding: 40px;
+        border: 8px solid;
+        max-width: 900px;
+    }
+
+    .gallery-title {
+        font-size: 2.2rem;
+        margin-bottom: 35px;
+        gap: 15px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-subtitle {
+        font-size: 1.4rem;
+    }
+}
+
 /* Tablets (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .gallery-wrapper {
@@ -364,6 +414,8 @@ body {
 @media (max-width: 479px) {
     .container {
         padding: 10px;
+        height: auto;
+        min-height: 100vh;
     }
 
     .gallery-wrapper {
@@ -372,6 +424,7 @@ body {
         border-color: #ff1493 #ff1493 #d15ac0 #d15ac0;
         border-radius: 8px;
         max-width: 95vw;
+        width: 100%;
     }
 
     .gallery-title {
@@ -389,6 +442,7 @@ body {
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+        margin-bottom: 20px;
     }
 
     .photo-frame {

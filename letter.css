@@ -89,10 +89,26 @@ body{
   color: #4b2b2b;
 }
 
-/* small responsive tweaks */
-@media (max-width: 640px){
-  :root{ --paper-w: 92vw; }
-  .paper{ padding: 28px 20px; }
+/* Responsive design for different screen sizes */
+@media (max-width: 1024px){
+  .paper{ padding: 48px 56px; }
+  .paper h2{ font-size: 1.4rem; }
+  .paper p{ font-size: 0.95rem; }
+}
+
+@media (max-width: 768px){
+  :root{ --paper-w: 95vw; }
+  .paper{ padding: 40px 48px; height: clamp(400px, 75vh, 900px); }
+  .paper h2{ font-size: 1.2rem; }
+  .paper p{ font-size: 0.9rem; line-height: 1.6; }
+}
+
+@media (max-width: 480px){
+  :root{ --paper-w: 98vw; }
+  .paper{ padding: 24px 16px; height: clamp(360px, 85vh, 800px); }
+  .paper h2{ font-size: 1rem; }
+  .paper p{ font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0; }
+  .paper-inner{ padding-bottom: 100px; }
 }
 
 /* Signature styling (lower-right, cursive name) */
@@ -116,6 +132,16 @@ body{
   font-family: 'Great Vibes', 'Brush Script MT', 'Brush Script Std', cursive;
   font-weight: 400;
   line-height: 0.9;
+}
+
+@media (max-width: 768px){
+  .signature{ right: 48px; bottom: 44px; font-size: 0.9rem; }
+  .signature-name{ font-size: 1.8rem; }
+}
+
+@media (max-width: 480px){
+  .signature{ right: 16px; bottom: 32px; font-size: 0.75rem; }
+  .signature-name{ font-size: 1.4rem; margin-top: 4px; }
 }
 
 /* Paper label shown before the letter is revealed */
@@ -147,6 +173,10 @@ body{
 
 @media (max-width: 640px){
   .paper-label{ font-size: 2rem; left: 28px; right: 28px; top: 28px; }
+}
+
+@media (max-width: 480px){
+  .paper-label{ font-size: 1.6rem; left: 20px; right: 20px; top: 20px; letter-spacing: 1px; }
 }
 
 /* Magical word animation styles */
