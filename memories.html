@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Recent Photo Memory</title>
+    <link rel="stylesheet" href="memories.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <button id="memBackBtn" class="mem-back-btn" aria-label="Back">← Back</button>
+        <div class="gallery-wrapper">
+            <div class="gallery-title">
+                <span>OUR RECENT    PHOTO</span>
+                <span class="heart">❤️</span>
+                <span>MEMORY</span>
+            </div>
+            
+            <div class="photo-grid">
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture1.jpg" alt="Memory 1">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture2.jpg" alt="Memory 2">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture3.jpg" alt="Memory 3">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture4.jpg" alt="Memory 4">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture5.jpg" alt="Memory 5">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture6.jpg" alt="Memory 6">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture7.jpg" alt="Memory 7">
+                </div>
+                <div class="photo-frame">
+                    <div class="box-cover" role="button" aria-label="Open gift" tabindex="0">
+                        <div class="half left"></div>
+                        <div class="half right"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <img src="images/picture8.jpg" alt="Memory 8">
+                </div>
+            </div>
+            
+            <div class="gallery-subtitle">These still makes me smile.</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const back = document.getElementById('memBackBtn');
+            if (back) {
+                back.addEventListener('click', function () { history.back(); });
+                back.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); history.back(); }
+                });
+            }
+
+            // Gift-cover open handlers
+            const covers = document.querySelectorAll('.box-cover');
+            covers.forEach(function (cover) {
+                const frame = cover.closest('.photo-frame');
+                if (!frame) return;
+
+                function open() {
+                    if (frame.classList.contains('opened')) return;
+                    frame.classList.add('opened');
+                }
+
+                cover.addEventListener('click', open);
+                cover.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+                });
+            });
+        });
+    </script>
+    <script src="kiss.js"></script>
+</body>
+</html>

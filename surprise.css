@@ -1,0 +1,440 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    /* subtle background to replace removed image */
+    background: linear-gradient(180deg, #fff7fb 0%, #fff4f0 50%, #fffdf5 100%);
+}
+
+ .background {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image: url('images/surprice.jpg');
+     background-size: cover;
+     background-position: center;
+     filter: blur(3px);
+     z-index: 0;
+ }
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+.title {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+/* ========== WINDOW STYLING ========== */
+.window {
+    width: 600px;
+    max-width: 90vw;
+    background: #e6d5ff;
+    border: 8px solid;
+    border-color: #ff1493 #ff1493 #d15ac0 #d15ac0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.window-header {
+    background: linear-gradient(to right, #ff69b4, #ffb6c1);
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #d15ac0;
+}
+
+.window-title {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.window-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.window-btn {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    background: #ffb6c1;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.window-btn:hover {
+    background: #ff69b4;
+}
+
+/* ========== ADDRESS BAR ========== */
+.address-bar {
+    background: #f8f8f8;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #999;
+    background: white;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background: #f0f0f0;
+}
+
+.search {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.search:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+.nav-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ffb6c1;
+    cursor: pointer;
+    border: 1px solid #999;
+}
+
+/* ========== WINDOW CONTENT ========== */
+.window-content {
+    padding: 40px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.message {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* gold gradient text */
+    background: linear-gradient(180deg, #ffd700 0%, #ffde7a 50%, #f6d06b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.12);
+}
+
+/* sticker drop tweaks: ensure stickers layer above blurred background */
+.sticker {
+    mix-blend-mode: normal;
+}
+
+.message p {
+    margin-bottom: 10px;
+}
+
+/* ========== FOLDERS ========== */
+.folders {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+}
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.folder:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* make sure the folder labels are keyboard-focusable and visible */
+.folder[role="button"]:focus {
+    outline: 3px solid rgba(255,20,147,0.15);
+}
+
+.folder-icon {
+    width: 60px;
+    height: 50px;
+    background: linear-gradient(135deg, #ffeb3b 0%, #fdd835 100%);
+    border: 2px solid #f9a825;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.folder-icon::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 25px;
+    height: 15px;
+    background: linear-gradient(135deg, #ffeb3b 0%, #fdd835 100%);
+    border: 2px solid #f9a825;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+}
+
+.folder p {
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+    .window {
+        width: 600px;
+    }
+    
+    .window-content {
+        padding: 40px;
+        gap: 40px;
+    }
+    
+    .message {
+        font-size: 1.3rem;
+    }
+    
+    .folders {
+        gap: 60px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+        right: 60px;
+        top: 40px;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .window {
+        width: 85vw;
+        border: 6px solid;
+    }
+    
+    .window-content {
+        padding: 30px;
+        gap: 30px;
+    }
+    
+    .message {
+        font-size: 1.1rem;
+    }
+    
+    .folders {
+        gap: 40px;
+    }
+    
+    .folder-icon {
+        width: 55px;
+        height: 45px;
+    }
+    
+    .title {
+        font-size: 2rem;
+        right: 30px;
+        top: 30px;
+    }
+}
+
+/* Small tablets and large phones (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .window {
+        width: 90vw;
+        border: 5px solid;
+        border-radius: 10px;
+    }
+    
+    .window-header {
+        padding: 8px 10px;
+    }
+    
+    .window-content {
+        padding: 20px;
+        gap: 20px;
+        min-height: 250px;
+    }
+    
+    .message {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .message p {
+        margin-bottom: 8px;
+    }
+    
+    .folders {
+        gap: 25px;
+    }
+    
+    .folder-icon {
+        width: 50px;
+        height: 40px;
+    }
+    
+    .folder p {
+        font-size: 0.8rem;
+    }
+    
+    .title {
+        font-size: 1.3rem;
+        right: 15px;
+        top: 15px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Mobile phones (below 480px) */
+@media (max-width: 479px) {
+    .window {
+        width: 95vw;
+        border: 4px solid;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .window-header {
+        padding: 6px 8px;
+    }
+    
+    .window-title {
+        font-size: 0.8rem;
+    }
+    
+    .window-btn {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+    
+    .address-bar {
+        padding: 8px 10px;
+        gap: 6px;
+    }
+    
+    .nav-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+    
+    .search {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .nav-circle {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .window-content {
+        padding: 15px;
+        gap: 15px;
+        min-height: auto;
+    }
+    
+    .message {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        letter-spacing: 0px;
+    }
+    
+    .message p {
+        margin-bottom: 6px;
+    }
+    
+    .folders {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .folder {
+        gap: 8px;
+    }
+    
+    .folder-icon {
+        width: 45px;
+        height: 35px;
+    }
+    
+    .folder-icon::before {
+        width: 22px;
+        height: 12px;
+        top: -6px;
+    }
+    
+    .folder p {
+        font-size: 0.75rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+        right: 10px;
+        top: 12px;
+        letter-spacing: 0.5px;
+    }
+}

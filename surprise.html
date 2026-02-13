@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Files</title>
+    <link rel="stylesheet" href="surprise.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        
+        <div class="window">
+            <div class="window-header">
+                <span class="window-title">Browser</span>
+                <div class="window-buttons">
+                    <button class="window-btn minimize">−</button>
+                    <button class="window-btn maximize">□</button>
+                    <button class="window-btn close">×</button>
+                </div>
+            </div>
+            
+            <div class="address-bar">
+                <button class="nav-btn" id="backBtn" aria-label="Back">←</button>
+                <button class="nav-btn" id="forwardBtn" aria-label="Forward">→</button>
+                <button class="nav-btn" id="reloadBtn" aria-label="Reload">↻</button>
+                <input type="text" placeholder="Search" class="search">
+                <div class="nav-circle"></div>
+            </div>
+            
+            <div class="window-content">
+                <div class="message">
+                    <p>This is for you, Freya</p>
+                    <p>You, my dearest!</p>
+                    <p>in every version or timeline of our life .</p>
+                    <p>Near or far,</p>
+                    <p>you are where my heart goes first.</p>
+                </div>
+                
+                <div class="folders">
+                    <div class="folder" id="surprise1Folder" role="button" tabindex="0">
+                        <div class="folder-icon"></div>
+                        <p>Surprise1</p>
+                    </div>
+                    <div class="folder" id="surprise2Folder" role="button" tabindex="0">
+                        <div class="folder-icon"></div>
+                        <p>Surprise2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Make Surprise1 navigate to memories.html and add keyboard support
+        document.addEventListener('DOMContentLoaded', function () {
+            const s1 = document.getElementById('surprise1Folder');
+            const s2 = document.getElementById('surprise2Folder');
+
+            if (s1) {
+                s1.style.cursor = 'pointer';
+                s1.addEventListener('click', function () {
+                    window.location.href = 'memories.html';
+                });
+                s1.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.location.href = 'memories.html';
+                    }
+                });
+            }
+
+            if (s2) {
+                s2.style.cursor = 'pointer';
+                s2.addEventListener('click', function () {
+                    window.location.href = 'surprise2.html';
+                });
+                s2.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.location.href = 'surprise2.html';
+                    }
+                });
+            }
+
+            // Navigation buttons: Back / Forward / Reload
+            const backBtn = document.getElementById('backBtn');
+            const forwardBtn = document.getElementById('forwardBtn');
+            const reloadBtn = document.getElementById('reloadBtn');
+
+            if (backBtn) {
+                backBtn.style.cursor = 'pointer';
+                backBtn.addEventListener('click', function () {
+                    history.back();
+                });
+            }
+
+            if (forwardBtn) {
+                forwardBtn.style.cursor = 'pointer';
+                forwardBtn.addEventListener('click', function () {
+                    history.forward();
+                });
+            }
+
+            if (reloadBtn) {
+                reloadBtn.style.cursor = 'pointer';
+                reloadBtn.addEventListener('click', function () {
+                    location.reload();
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="stickers.js"></script>
+    <script src="kiss.js"></script>
+</body>
+</html>

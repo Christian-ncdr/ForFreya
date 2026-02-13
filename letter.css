@@ -1,0 +1,201 @@
+/* letter.css — crumpled old paper that slowly opens */
+:root{
+  --paper-w: 920px;
+  --paper-h: 540px;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(180deg, #fff7fb 0%, #fff4f0 50%, #fffdf5 100%);
+}
+
+.letter-wrap{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+.paper{
+  position: relative;
+  width: min(92%, var(--paper-w));
+  max-width: var(--paper-w);
+  height: clamp(480px, 80vh, 1000px);
+  background: linear-gradient(180deg,#fbf3de 0%, #f7ecd1 100%);
+  padding: 56px 64px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.07);
+  transform-origin: center;
+  /* start crumpled */
+  transform: scale(0.72) rotate(8deg) skew(3deg) translateY(40px);
+  filter: saturate(0.95) contrast(0.98) blur(0.2px);
+  transition: transform 900ms cubic-bezier(.22,.9,.25,1), filter 700ms ease, box-shadow 700ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.paper::before{
+  /* subtle paper texture */
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  left: -5%;
+  top: -5%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.01) 0 1px, transparent 1px 6px);
+  mix-blend-mode: multiply;
+  border-radius: 8px;
+  z-index: -1;
+}
+
+/* When uncrumple class is added, flatten and lift */
+.paper.uncrumple{
+  transform: scale(1.06) rotate(0deg) skew(0deg) translateY(0);
+  filter: none;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+
+.paper-inner{
+  opacity: 0;
+  transform: translateY(16px) scaleY(0.98);
+  transition: transform 900ms cubic-bezier(.22,.9,.25,1), opacity 800ms ease;
+  color: #4b2b2b;
+  line-height: 1.8;
+  padding-bottom: 140px;
+}
+
+.paper-inner.reveal{
+  opacity: 1;
+  transform: none;
+}
+
+.paper h2{
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;
+  color: #5a2b2b;
+}
+
+.paper p{
+  margin: 0 0 12px 0;
+  font-size: 1.05rem;
+  color: #4b2b2b;
+}
+
+/* small responsive tweaks */
+@media (max-width: 640px){
+  :root{ --paper-w: 92vw; }
+  .paper{ padding: 28px 20px; }
+}
+
+/* Signature styling (lower-right, cursive name) */
+.signature{
+  position: absolute;
+  right: 64px;
+  bottom: 56px;
+  text-align: right;
+  color: #4b2b2b;
+  font-size: 1rem;
+  line-height: 1.1;
+  z-index: 6;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.signature-name{
+  display: block;
+  margin-top: 6px;
+  font-size: 2.2rem;
+  font-family: 'Great Vibes', 'Brush Script MT', 'Brush Script Std', cursive;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+/* Paper label shown before the letter is revealed */
+.paper-label{
+  position: absolute;
+  top: 32px;
+  left: 48px;
+  right: 48px;
+  text-align: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 3.2rem;
+  color: rgba(75,43,43,0.95);
+  letter-spacing: 2px;
+  font-weight: 600;
+  opacity: 1;
+  transition: opacity 600ms ease, transform 600ms ease;
+  pointer-events: none;
+}
+.paper.uncrumple .paper-label{
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* Reveal signature after uncrumple to avoid covering paragraph */
+.paper.uncrumple .signature{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px){
+  .paper-label{ font-size: 2rem; left: 28px; right: 28px; top: 28px; }
+}
+
+/* Magical word animation styles */
+.magical-word{
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 220ms ease, transform 300ms cubic-bezier(.2,.9,.2,1);
+  white-space: pre;
+}
+
+/* Hide whole paragraph until paper is revealed */
+.magical-text{ visibility: hidden; }
+.paper-inner.reveal .magical-text{ visibility: visible; }
+
+.magical-word.fiery{
+  opacity: 1;
+  transform: none;
+  animation: fiery-glow 700ms forwards ease-out;
+}
+
+@keyframes fiery-glow{
+  0%{ text-shadow: none; color: rgba(255,200,120,0.0); }
+  30%{ color: #ffd089; text-shadow: 0 0 10px rgba(255,160,0,0.95), 0 0 22px rgba(255,120,0,0.6); }
+  60%{ color: #ff9f2a; text-shadow: 0 0 18px rgba(255,140,30,0.98), 0 0 36px rgba(255,110,0,0.6); }
+  100%{ color: #f6c37a; text-shadow: 0 0 8px rgba(255,160,0,0.6), 0 0 16px rgba(255,120,0,0.35); }
+}
+
+.magical-word.shimmer{
+  /* shimmer uses background-clip to briefly show a bright trace */
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: shimmer 700ms linear forwards;
+}
+
+@keyframes shimmer{
+  from { background-position: -120% 0; }
+  to { background-position: 120% 0; }
+}
+
+.magical-word.magical-final{
+  opacity: 1;
+  transform: none;
+  color: #b8860b; /* soft golden */
+  text-shadow: 0 1px 0 #ffefc0, 0 0 6px rgba(184,134,11,0.45);
+}
+
+/* Ensure the signature doesn't overlap visible body while hidden; it's revealed when paper uncrumples */
+.signature{ pointer-events: none; }
