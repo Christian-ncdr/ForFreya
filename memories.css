@@ -38,12 +38,8 @@ body {
     z-index: 1;
 }
 
-@media (max-width: 768px){
-  .container{ padding-top: 70px; }
-}
-
 @media (max-width: 480px){
-  .container{ padding-top: 60px; height: auto; min-height: 100vh; }
+  .container{ height: auto; min-height: 100vh; }
 }
 
 .gallery-wrapper {
@@ -58,19 +54,19 @@ body {
 }
 
 @media (max-width: 768px){
-  .gallery-wrapper{ padding: 30px; border: 6px solid; margin-top: 20px; }
+  .gallery-wrapper{ padding: 30px; border: 6px solid; }
 }
 
 @media (max-width: 480px){
-  .gallery-wrapper{ padding: 20px; border: 5px solid; margin-top: 15px; margin-bottom: 20px; }
+  .gallery-wrapper{ padding: 20px; border: 5px solid; margin-bottom: 20px; }
 }
 
 /* Back button */
 .mem-back-btn {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 2;
+    z-index: 100;
     background: transparent;
     border: 2px solid #ff1493;
     color: #ff1493;
@@ -94,7 +90,7 @@ body {
 }
 
 @media (max-width: 480px){
-  .mem-back-btn{ top: 12px; left: 12px; padding: 5px 8px; font-size: 0.75rem; }
+  .mem-back-btn{ top: 12px; left: 12px; padding: 5px 8px; font-size: 0.75rem; border: 1.5px solid; }
 }
 
 /* ========== GALLERY TITLE ========== */
