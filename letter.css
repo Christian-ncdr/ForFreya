@@ -11,6 +11,7 @@ body{
   justify-content:center;
   font-family: 'Georgia', 'Times New Roman', serif;
   background: linear-gradient(180deg, #fff7fb 0%, #fff4f0 50%, #fffdf5 100%);
+  overflow-y: auto;
 }
 
 .letter-wrap{
@@ -19,6 +20,7 @@ body{
   align-items:center;
   justify-content:center;
   padding:40px 20px;
+  min-height: 100vh;
 }
 
 .paper{
@@ -72,6 +74,18 @@ body{
   padding-bottom: 140px;
 }
 
+@media (max-width: 1024px){
+  .paper-inner{ padding-bottom: 160px; }
+}
+
+@media (max-width: 768px){
+  .paper-inner{ padding-bottom: 180px; }
+}
+
+@media (max-width: 480px){
+  .paper-inner{ padding-bottom: 200px; overflow-y: auto; }
+}
+
 .paper-inner.reveal{
   opacity: 1;
   transform: none;
@@ -98,17 +112,17 @@ body{
 
 @media (max-width: 768px){
   :root{ --paper-w: 95vw; }
-  .paper{ padding: 40px 48px; height: clamp(400px, 75vh, 900px); }
+  .paper{ padding: 40px 48px; height: auto; min-height: 500px; max-height: 80vh; }
   .paper h2{ font-size: 1.2rem; }
   .paper p{ font-size: 0.9rem; line-height: 1.6; }
 }
 
 @media (max-width: 480px){
   :root{ --paper-w: 98vw; }
-  .paper{ padding: 24px 16px; height: clamp(360px, 85vh, 800px); }
+  .paper{ padding: 24px 16px; height: auto; min-height: 450px; max-height: 85vh; overflow-y: auto; }
   .paper h2{ font-size: 1rem; }
   .paper p{ font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0; }
-  .paper-inner{ padding-bottom: 100px; }
+  .paper-inner{ padding-bottom: 200px; }
 }
 
 /* Signature styling (lower-right, cursive name) */
@@ -135,13 +149,13 @@ body{
 }
 
 @media (max-width: 768px){
-  .signature{ right: 48px; bottom: 44px; font-size: 0.9rem; }
+  .signature{ right: 48px; bottom: 50px; font-size: 0.9rem; }
   .signature-name{ font-size: 1.8rem; }
 }
 
 @media (max-width: 480px){
-  .signature{ right: 16px; bottom: 32px; font-size: 0.75rem; }
-  .signature-name{ font-size: 1.4rem; margin-top: 4px; }
+  .signature{ right: 16px; bottom: 40px; font-size: 0.75rem; }
+  .signature-name{ font-size: 1.3rem; margin-top: 4px; }
 }
 
 /* Paper label shown before the letter is revealed */
